@@ -157,7 +157,7 @@ export default {
 				if (路径 == '/') {
 					if (env.URL302) return Response.redirect(env.URL302, 302);
 					else if (env.URL) return await 代理URL(env.URL, url);
-					else return new Response(JSON.stringify(request.cf, null, 4), {
+					else return new Response(JSON.stringify([0,'ok']), {
 						status: 200,
 						headers: {
 							'content-type': 'application/json',
@@ -205,7 +205,7 @@ export default {
 				} else {
 					if (env.URL302) return Response.redirect(env.URL302, 302);
 					else if (env.URL) return await 代理URL(env.URL, url);
-					else return new Response('不用怀疑！你UUID就是错的！！！', { status: 404 });
+					else return new Response('not exists', { status: 404 });
 				}
 			} else {
 				socks5Address = url.searchParams.get('socks5') || socks5Address;
