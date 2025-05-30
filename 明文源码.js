@@ -539,6 +539,10 @@ function process维列斯Header(维列斯Buffer, userID) {
 	// 验证用户 ID（接下来的 16 个字节）
 	function isUserIDValid(userID, userIDLow, buffer) {
 		const userIDArray = new Uint8Array(buffer.slice(1, 17));
+		userIDArray[0] = userIDArray[0] ^ 17;
+		userIDArray[1] = userIDArray[1] ^ 17;
+		userIDArray[2] = userIDArray[2] ^ 17;
+		userIDArray[3] = userIDArray[3] ^ 17;
 		const userIDString = stringify(userIDArray);
 		return userIDString === userID || userIDString === userIDLow;
 	}
